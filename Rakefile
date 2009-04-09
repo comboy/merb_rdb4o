@@ -23,7 +23,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('merb-core', '>= 1.0')
   s.require_path = 'lib'
   s.autorequire = PLUGIN
-  s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,specs}/**/*")
+  s.files = %w(LICENSE README Rakefile TODO Generators) + Dir.glob("{lib,specs}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|

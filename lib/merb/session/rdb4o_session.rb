@@ -94,13 +94,17 @@ module Merb
       @data, @unmarshalled_data = data, data
     end
   
-  private
+    def save
+      serialize_data
+      super
+    end
+      
     
-    before_save :serialize_data
-    
-    def serialize_data
-      @data = self.class.marshal(self.data)
-    end    
+    # before :save, :serialize_data
+    # 
+    # def serialize_data
+    #   @data = self.class.marshal(self.data)
+    # end    
   end
   
 end
