@@ -8,7 +8,7 @@ namespace :rdb4o do
       #puts "  #{command}"
       class_files << class_file
     end
-    command = "javac -cp #{Rdb4o::Base.base_classpath} #{class_files.join(' ')}"
+    command = "javac -cp #{Rdb4o::Model.base_classpath} #{class_files.join(' ')}"
     exec command
     puts "DONE"
   end

@@ -1,6 +1,5 @@
-
+require 'merb-core/dispatch/session'
 require 'base64'
-
 
 module Merb
 
@@ -24,9 +23,8 @@ module Merb
     end
   end  
   
-  
   class MerbSession 
-    include Rdb4o::Base
+    include Rdb4o::Model
     attr_accessor :needs_new_cookie
   
     class << self
@@ -96,24 +94,17 @@ module Merb
       @data, @unmarshalled_data = data, data
     end
   
-  private
+    def save
+      serialize_data
+      super
+    end
+      
     
-    before_save :serialize_data
-    
-    def serialize_data
-      @data = self.class.marshal(self.data)
-    end    
+    # before :save, :serialize_data
+    # 
+    # def serialize_data
+    #   @data = self.class.marshal(self.data)
+    # end    
   end
-  
-#  class DataMapperSession < DataMapper::Base
-#    
-#    set_table_name "sessions"
-#    property :session_id, :string, :length => 255, :lazy => false, :key => true
-#    property :data,       :text, :lazy => false
-#    property :updated_at, :datetime
-#  
-#
-#  end
-
   
 end
