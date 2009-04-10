@@ -1,0 +1,5 @@
+merb_db4o
+=========
+
+A plugin for the Merb framework that provides access to db4o object database.
+

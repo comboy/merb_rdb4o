@@ -1,0 +1,14 @@
+---
+# This is a sample database file for the DataMapper ORM
+:development: &defaults
+  :type: local
+  :dbfile: testowo.db
+  
+
+:test:
+  <<: *defaults
+  :database: sample_test
+
+:production:
+  <<: *defaults
+  :database: sample_production
